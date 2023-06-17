@@ -1,0 +1,41 @@
+@include "base.fgd"
+@include "halflife2.fgd"
+
+//Hairy cocks
+
+@PointClass iconsprite("editor/bl_point_sprite.vmt") sphere(LightSize) sphere(ShadowSize) color(180 10 180) = bl_point : "Base Blend Light entity"
+[
+    _light(color255) : "Color" : "255 255 255 255" : "Light point color (R G B A)"
+    Brightness(float) : "Brightness" : 1 : "Light point brightness (0 - 6)"
+    LightSize(integer) : "Lighting Distance" : 256 : "Light point lighting distance (0 - 1024)"
+    ShadowSize(integer) : "Shadow Distance" : 512 : "Light point shadown distance (0 - 4096)"
+	LightWorld(choices) : "World Lighting" : "1" : "Will it light up a world?" =
+	[
+		"0" : "No"
+		"1" : "Yes"
+	]
+	LightModels(choices) : "Model Lighting" : "1" : "Will it light up models?"  =
+	[
+		"0" : "No"
+		"1" : "Yes"
+	]
+	On(choices) : "On?" : "1" : "Starts on?" =
+	[
+		"0" : "No"
+		"1" : "Yes"
+	]
+]
+
+@PointClass iconsprite("editor/bl_spot_sprite.vmt") frustum(FOV,-1,-1,_light,-1) = bl_spot : "Base Blend Spot entity."
+[
+    Angles(angle) : "Pitch Yaw Roll (Y Z X)" : "0 0 0" : "Spot angle"
+    _light(color255) : "Color" : "255 255 255 255" : "Spot color (R G B A)"
+    FOV(integer) : "FOV" : 128 : "FOV"
+    Brightness(float) : "Brightness" : "1.2" : "Spot brightness (0 - 6)"
+    Distance(integer) : "Distance" : 512 : "Spot distance (64 - 2048)"
+	On(choices) : "On?" : "1" : "Starts on?" =
+	[
+		"0" : "No"
+		"1" : "Yes"
+	]
+]
